@@ -1,25 +1,15 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
+<ion-header>
+  <ion-toolbar color="primary">
     <ion-title>
-      Gráficos
+      Visualización de Datos
     </ion-title>
-    <ion-segment [value]="tipoDeChartSeleccionado" (ionChange)="segmentChanged($event)">
-      <ion-segment-button value="bar-chart">
-        BAR CHART
-      </ion-segment-button>
-      <ion-segment-button value="line-chart">
-        LINE CHART
-      </ion-segment-button>
-      <ion-segment-button value="pie-chart">
-        PIE CHART
-      </ion-segment-button>
-    </ion-segment>
   </ion-toolbar>
+  <!-- <ion-button (click)="generarPDF()">Generar PDF</ion-button> -->
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <!--Si el tipo seleccionado es bar-chart se enseñan los 3 graficos-->
-  <ion-grid *ngIf="tipoDeChartSeleccionado === 'bar-chart'">
+  <!--Se enseñan los 3 graficos en un grid-->
+  <ion-grid>
     <ion-row>
       <ion-col size="6">
         <app-bar-chart [nombresCategorias]="categorias" [borderColorCategorias]="borderColorCat" [backgroundColorCategorias]="backgroundColorCat"></app-bar-chart>
@@ -27,19 +17,15 @@
       <ion-col size="6">
         <ion-row>
           <ion-col size="12">
-            <app-line-chart></app-line-chart>
+            <app-pie-chart></app-pie-chart>
           </ion-col>
         </ion-row>
         <ion-row>
           <ion-col size="12">
-            <app-pie-chart></app-pie-chart>
+            <app-line-chart></app-line-chart>
           </ion-col>
         </ion-row>
       </ion-col>
     </ion-row>
   </ion-grid>
-
-  <!--Para los otros segmentos se enseña solamente su grafica-->
-  <app-line-chart *ngIf="tipoDeChartSeleccionado === 'line-chart'"></app-line-chart>
-  <app-pie-chart *ngIf="tipoDeChartSeleccionado === 'pie-chart'"></app-pie-chart>
 </ion-content>

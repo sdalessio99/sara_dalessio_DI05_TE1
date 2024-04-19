@@ -44,8 +44,6 @@ borderColorCat: string[] =[
 apiKey: string = environment.apiKey;
 apiUrl: string = environment.apiUrl;
 
-tipoDeChartSeleccionado: string = "bar-chart";
-
 constructor(private router: Router, public gestionServiceApi: GestionApiService) {}
 
 ngOnInit() {
@@ -54,16 +52,4 @@ ngOnInit() {
   });
 }
 
-//Metodo para los cambios de segmento
-segmentChanged(event: any) {
-  this.router.navigate(['/home', event.detail.value]);
-  //Recogemos el tipo de chart (bar-chart, line-chart o pie-chart) desde el evento del componente
-  this.tipoDeChartSeleccionado = event.detail.value;
-  //Si es un bar-chart se hace una llamada api por cada categoria
-  if (this.tipoDeChartSeleccionado == "bar-chart"){
-    this.categorias.forEach(categoria => {
-      this.gestionServiceApi.cargarCategoria(categoria);
-    });
-  }
-}
 }
