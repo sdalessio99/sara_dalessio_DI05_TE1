@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-tablas',
@@ -6,6 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./tablas.component.scss'],
 })
 export class TablasComponent  implements OnInit {
+  
+  @Input() datosTabla: any[] = [];
 
   constructor() { }
 

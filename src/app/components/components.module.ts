@@ -13,6 +13,6 @@ import { TablasComponent } from './tablas/tablas.component';
     CommonModule,
     IonicModule
   ],
-  exports: [BarChartComponent, LineChartComponent, PieChartComponent]
+  exports: [BarChartComponent, LineChartComponent, PieChartComponent, TablasComponent]
 })
 export class ComponentsModule { }

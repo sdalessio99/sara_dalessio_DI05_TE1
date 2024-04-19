@@ -1,3 +1,24 @@
-<p>
-  tablas works!
-</p>
+<!-- se declara el valor que tiene el pipe tablePipe que va a ser 10 -->
+<div *ngFor="let row of datosTabla | tablePipe: 10">
+  <!-- [ngClass] es una etiqueta de angular para añadir un class de html como condicional -->
+  <!-- se pone 10 como condicion ya que es el tamaño del pipe y queremos que tambien se pinten los que tienen menos de 10 rows y por lo tanto necesitan la clase seccion-->
+  <div class="divTabla" [ngClass]="{'seccion': row.length <= 10}">
+    <!-- Aquí creamos una tabla por cada conjunto de 20 filas -->
+    <table class="mi-tabla">
+      <thead>
+        <tr>
+          <!-- Encabezados de la tabla -->
+          <!-- | keyvalue se usa porque se estan leyendo los datos en formato json (llave-valor) y para el table header nos interesa la parte de la llave -->
+          <!-- por lo tanto para los th usaremos item.key y para los table row usaremos item.value -->
+          <th *ngFor="let item of row[0] | keyvalue">{{ item.key }}</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Filas de la tabla -->
+        <tr *ngFor="let fila of row">
+          <td *ngFor="let item of fila | keyvalue">{{ item.value }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

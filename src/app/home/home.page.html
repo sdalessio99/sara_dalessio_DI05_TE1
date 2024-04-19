@@ -4,28 +4,34 @@
       Visualización de Datos
     </ion-title>
   </ion-toolbar>
-  <!-- <ion-button (click)="generarPDF()">Generar PDF</ion-button> -->
+  <ion-button (click)="generarPDF()">Generar PDF</ion-button>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <!--Se enseñan los 3 graficos en un grid-->
-  <ion-grid>
-    <ion-row>
-      <ion-col size="6">
-        <app-bar-chart [nombresCategorias]="categorias" [borderColorCategorias]="borderColorCat" [backgroundColorCategorias]="backgroundColorCat"></app-bar-chart>
-      </ion-col>
-      <ion-col size="6">
-        <ion-row>
-          <ion-col size="12">
-            <app-pie-chart></app-pie-chart>
-          </ion-col>
-        </ion-row>
-        <ion-row>
-          <ion-col size="12">
-            <app-line-chart></app-line-chart>
-          </ion-col>
-        </ion-row>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
-</ion-content>
+  <div #container>
+    <div class="dashboard-content">
+      <!-- titulo primero -->
+      <div class="seccion header">
+        <h1>Dashboard</h1>
+      </div>
+
+      <!-- graficas en divs para usar una clase y aplicar inline-flex en el scss-->
+      <div class="flex-container">
+        <div class="seccion chart-container"><app-bar-chart [nombresCategorias]="categorias" [borderColorCategorias]="borderColorCat" [backgroundColorCategorias]="backgroundColorCat"></app-bar-chart></div>
+        <div class="seccion chart-container"><app-pie-chart></app-pie-chart></div>
+        <div class="seccion chart-container"><app-line-chart></app-line-chart></div>
+      </div>
+
+      <div class="table-container">
+        <h2 class="seccion">Table</h2>
+        <app-tablas [datosTabla]="datosTablaTab1"></app-tablas>
+      </div>
+
+      <div class="seccion list-container">
+        <h2>List</h2>
+        <ul *ngFor="let lista of datosLista">
+          <li>{{lista}}</li>
+        </ul>
+      </div>
+    </div>
+  </div>
